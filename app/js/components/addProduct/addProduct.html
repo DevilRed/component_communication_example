@@ -1,0 +1,8 @@
+<h3>ADD PRODUCTS</h3>
+<form name="addProduct" novalidate>
+	<select ng-model="$ctrl.selected" ng-options="product.name for product in $ctrl.products" required>
+	</select>
+	<label for="quantity">Quantity:</label>
+	<input type="number" name="quantity" ng-model="quantity" min="1">
+	<span><strong>Price: </strong> {{ $ctrl.selected.price | currency }}</span>
+</form>
