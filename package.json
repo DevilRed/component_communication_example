@@ -1,0 +1,42 @@
+{
+  "name": "my-approach",
+  "version": "1.0.0",
+  "description": "doing angular project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.5.6",
+    "angular-loader": "^1.5.6",
+    "angular-mocks": "^1.5.6",
+    "angular-route": "^1.5.6",
+    "bower": "^1.7.9",
+    "browser-sync": "^2.12.10",
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-if": "^2.0.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.8",
+    "gulp-webserver": "^0.9.1",
+    "gulp.spritesmith": "^6.2.1",
+    "jasmine-core": "^2.5.2",
+    "jquery": "^2.2.4",
+    "jshint": "^2.9.2",
+    "karma": "^1.4.1",
+    "karma-browserify": "^5.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.8.0"
+  }
+}
