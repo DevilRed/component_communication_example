@@ -15,19 +15,28 @@
 			- Communicating with services
 	 */
 	app.factory("cartService",function(){
-	  var callbacks=[];
-	  var items = 0;
-	  var addItemToCart=function(){
-	  	// this is where the magic happens
-	    items++;// implementing some logic to be shared
-	    var someData = 'this is another someData';
+	  var callbacks = [];
+	  var soldItems = [];
+	  var addItemToCart=function(item, quantity){
+	    var idx = soldItems.indexOf(item);
+	    if(idx >= 0){
+	    	soldItems[idx].quantity = quantity;
+	    	soldItems[idx].total = doTotal(quantity, item.price);
+	    } else{
+	    	item.quantity = quantity;
+	    	item.total = doTotal(quantity, item.price);
+	    	soldItems.push(item);
+	    }
 
-		  // notify if there are any listeners
-		  // the components can register functions that will be executed
 		  var i=0;
-		  for(i=0; i<callbacks.length;i++)
-		  	callbacks[i](items, someData);// here we are exposing the shared data between components, so it becomes available in any component
+		  for(i=0; i<callbacks.length;i++){
+		  	callbacks[i](soldItems);
+		  }
 		}
+
+		var doTotal = function (q, p){
+			return q * p;
+		};
 
 
 	  //register listener, this will be used by another components

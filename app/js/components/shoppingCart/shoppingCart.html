@@ -1,1 +1,19 @@
 <h3>YOUR SHOPPING CART</h3>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in $ctrl.soldItems">
+			<td>{{ item.name }}</td>
+			<td>{{ item.price }}</td>
+			<td>{{ item.quantity }}</td>
+			<td>{{ item.total | currency }}</td>
+		</tr>
+	</tbody>
+</table>

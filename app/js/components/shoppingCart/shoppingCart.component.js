@@ -12,13 +12,8 @@
 	function shoppingCartController($scope, cartService){
 		var ctrl = this;
 
-	  //subscribe items added callback
-		$scope.totalItems = 0;
-
-	  cartService.onItemsAdded(function(items, another){
-	    $scope.totalItems = items;
-	    console.log('reacting to the event using a service ' + $scope.totalItems);
-	    console.log(another);
+	  cartService.onItemsAdded(function(soldItems){
+	    ctrl.soldItems = soldItems;
 	  });
 	};
 })();
