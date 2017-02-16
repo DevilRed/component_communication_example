@@ -9,14 +9,16 @@
 			controller: shoppingCartController
 		});
 
-	function shoppingCartController($scope){
+	function shoppingCartController($scope, cartService){
 		var ctrl = this;
 
-		// registering to custom event
-		$scope.$on('registerProduct', function (event, data){
-			console.log('calling to another controller');
-			console.log(event);
-			console.log(data);
-		});
+	  //subscribe items added callback
+		$scope.totalItems = 0;
+
+	  cartService.onItemsAdded(function(items, another){
+	    $scope.totalItems = items;
+	    console.log('reacting to the event using a service ' + $scope.totalItems);
+	    console.log(another);
+	  });
 	};
 })();

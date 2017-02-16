@@ -9,7 +9,7 @@
 			controller: addProductController,
 		});
 
-	function addProductController($rootScope){
+	function addProductController($scope, $rootScope, cartService){
 		var ctrl = this;
 
 		ctrl.$onInit = function (){
@@ -20,10 +20,13 @@
 			];
 		};
 
-
+		// using the factory service
 		ctrl.saveProduct = function (){
-			// launching the custom event
-			$rootScope.$broadcast('registerProduct', ctrl.selected);
+			$scope.addToCart = cartService.addItemToCart();
 		};
+	  //subscribe items added callback
+	  cartService.onItemsAdded(function(items){
+	  	$scope.cartItems = items;
+	  });
 	};
 })();
