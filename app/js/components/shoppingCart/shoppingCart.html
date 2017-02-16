@@ -15,5 +15,11 @@
 			<td>{{ item.quantity }}</td>
 			<td>{{ item.total | currency }}</td>
 		</tr>
+		<tr>
+			<th>Total</th>
+			<td></td>
+			<td></td>
+			<td>{{ $ctrl.orderTotal | currency }}</td>
+		</tr>
 	</tbody>
 </table>

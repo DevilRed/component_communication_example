@@ -14,6 +14,11 @@
 
 	  cartService.onItemsAdded(function(soldItems){
 	    ctrl.soldItems = soldItems;
+	    ctrl.orderTotal = 0;
+	    angular.forEach(soldItems, function (val, key){
+	    	ctrl.orderTotal += val.total;
+	    })
+	    console.log(soldItems);
 	  });
 	};
 })();
