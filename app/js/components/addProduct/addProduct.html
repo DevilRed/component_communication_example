@@ -1,8 +1,9 @@
 <h3>ADD PRODUCTS</h3>
-<form name="addProduct" novalidate>
+<form name="$ctrl.addProduct" ng-submit="$ctrl.addProduct.$valid && $ctrl.saveProduct()" novalidate="novalidate">
 	<select ng-model="$ctrl.selected" ng-options="product.name for product in $ctrl.products" required>
 	</select>
 	<label for="quantity">Quantity:</label>
-	<input type="number" name="quantity" ng-model="quantity" min="1">
+	<input type="number" name="quantity" ng-model="quantity" min="1" required="">
 	<span><strong>Price: </strong> {{ $ctrl.selected.price | currency }}</span>
+	<button type="submit" ng-disabled="$ctrl.addProduct.$invalid" class="button">Add</button>
 </form>
