@@ -9,11 +9,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>{{ $ctrl.selectedProduct.name }}</td>
-			<td>{{ $ctrl.selectedProduct.quantity }}</td>
-			<td>{{ $ctrl.selectedProduct.price}}</td>
-			<td>{{ $ctrl.selectedProduct.total }}</td>
+		<tr ng-repeat="product in $ctrl.soldProducts">
+			<td>{{ product.name }}</td>
+			<td>{{ product.quantity }}</td>
+			<td>{{ product.price}}</td>
+			<td>{{ product.total }}</td>
 		</tr>
 	</tbody>
 </table>
