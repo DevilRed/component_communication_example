@@ -9,12 +9,12 @@
 			controller: shoppingCartController
 		});
 
-	function shoppingCartController($scope, cartService){
+	function shoppingCartController($scope, cartService, $localStorage){
 		var ctrl = this;
 		ctrl.products = cartService.getProducts();
 		ctrl.$onInit = function (){
 			ctrl.selectedProduct = {};
-			ctrl.soldProducts = [];
+			ctrl.soldProducts = $localStorage.soldProducts || [];
 		};
 
 	  cartService.onItemsAdded(function(item, quantity){
@@ -22,14 +22,14 @@
 	    ctrl.selectedProduct.quantity = quantity;
 	    ctrl.selectedProduct.total = item.price * quantity;
 
-	    var isSoldProduct = checkIfSoldProduct(ctrl.soldProducts, ctrl.selectedProduct);
-	    // console.log(isSoldProduct);
-	    if(ctrl.soldProducts.length == 0 || !isSoldProduct) {
-	    	ctrl.soldProducts.push(ctrl.selectedProduct);
+	    var isSoldProduct = checkIfSoldProduct($localStorage.soldProducts, ctrl.selectedProduct);
+	    console.log(isSoldProduct);
+	    if($localStorage.soldProducts.length == 0 || !isSoldProduct) {
+	    	$localStorage.soldProducts.push(ctrl.selectedProduct);
 	    } else {
-	    	ctrl.soldProducts.forEach(function (el){
+	    	$localStorage.soldProducts.forEach(function (el){
 	    		if(el.name === ctrl.selectedProduct.name) {
-	    			ctrl.selectedProduct.quantity = quantity;
+	    			el.quantity = quantity;
 	    		}
 	    	});
 	    }
