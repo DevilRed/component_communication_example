@@ -28,7 +28,7 @@ var path = {
 
 gulp.task('browser-sync', function (){
     browserSync.init({
-        proxy: "http://testing.localhost/angular/exercise_v2/app/"
+        proxy: "http://testing.localhost/js/angular/component_communication_example/app/"
     });
 });
 // linting
@@ -42,8 +42,8 @@ gulp.task('lint', function (){
 });
 // SASS PATHS
 var sassPaths = [
-  path.root + 'bower_components/foundation-sites/scss',
-  path.root + 'bower_components/motion-ui/src'
+  path.root + 'node_modules/foundation-sites/scss',
+  path.root + 'node_modules/motion-ui/src'
 ];
 // setting sass development
 gulp.task('sass', function (){
