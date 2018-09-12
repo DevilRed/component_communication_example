@@ -1,1 +1,19 @@
 <h3>YOUR SHOPPING CART</h3>
+<table>
+	<thead>
+		<tr>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Total</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ $ctrl.selectedProduct.name }}</td>
+			<td>{{ $ctrl.selectedProduct.quantity }}</td>
+			<td>{{ $ctrl.selectedProduct.price}}</td>
+			<td>{{ $ctrl.selectedProduct.total }}</td>
+		</tr>
+	</tbody>
+</table>

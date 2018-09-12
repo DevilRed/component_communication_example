@@ -16,17 +16,15 @@
 	 */
 	app.factory("cartService",function(){
 	  var callbacks=[];
-	  var items = 0;
-	  var addItemToCart=function(){
+	  var addItemToCart=function(selectedItem, quantity){
 	  	// this is where the magic happens
-	    items++;// implementing some logic to be shared
 	    var someData = 'this is another someData';
 
 		  // notify if there are any listeners
 		  // the components can register functions that will be executed
 		  var i=0;
 		  for(i=0; i<callbacks.length;i++)
-		  	callbacks[i](items, someData);// here we are exposing the shared data between components, so it becomes available in any component
+		  	callbacks[i](selectedItem, quantity);// here we are exposing the shared data between components, so it becomes available in any component
 		}
 
 

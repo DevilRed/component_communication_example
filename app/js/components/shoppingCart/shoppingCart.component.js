@@ -11,14 +11,18 @@
 
 	function shoppingCartController($scope, cartService){
 		var ctrl = this;
+		ctrl.products = [
+			{ name: 'TV', price: 500},
+			{ name: 'Microwave', price: 150},
+			{ name: 'ChromeCast', price: 70},
+		];
+		ctrl.selectedProduct = [];
 
-	  //subscribe items added callback
-		$scope.totalItems = 0;
-
-	  cartService.onItemsAdded(function(items, another){
-	    $scope.totalItems = items;
-	    console.log('reacting to the event using a service ' + $scope.totalItems);
-	    console.log(another);
+	  cartService.onItemsAdded(function(item, quantity){
+	    ctrl.selectedProduct = item;
+	    ctrl.selectedProduct.quantity = quantity;
+	    ctrl.selectedProduct.total = item.price * quantity;
+	    console.log(ctrl.selectedProduct);
 	  });
 	};
 })();

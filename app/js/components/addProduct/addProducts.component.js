@@ -22,7 +22,7 @@
 
 		// using the factory service
 		ctrl.saveProduct = function (){
-			$scope.addToCart = cartService.addItemToCart();
+			$scope.addToCart = cartService.addItemToCart(ctrl.selected, ctrl.quantity);
 		};
 	  //subscribe items added callback
 	  cartService.onItemsAdded(function(items){
