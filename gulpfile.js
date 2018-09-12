@@ -28,7 +28,8 @@ var path = {
 
 gulp.task('browser-sync', function (){
     browserSync.init({
-        proxy: "http://testing.localhost/js/angular/component_communication_example/app/"
+        // server: "app", port: 9000
+        server: path.app, port: 9000
     });
 });
 // linting
