@@ -37,6 +37,11 @@
 	    	});
 	    }
 	  });
+
+	  ctrl.clearStorage = function (){
+	  	$localStorage.$reset();
+	  	ctrl.soldProducts = [];
+	  };
 	};
 
 	function checkIfSoldProduct(items, sold){
