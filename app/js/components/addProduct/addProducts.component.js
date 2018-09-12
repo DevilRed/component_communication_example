@@ -13,11 +13,7 @@
 		var ctrl = this;
 
 		ctrl.$onInit = function (){
-			ctrl.products = [
-				{ name: 'TV', price: 500},
-				{ name: 'Microwave', price: 150},
-				{ name: 'ChromeCast', price: 70},
-			];
+			ctrl.products = cartService.getProducts();
 		};
 
 		// using the factory service

@@ -11,11 +11,7 @@
 
 	function shoppingCartController($scope, cartService){
 		var ctrl = this;
-		ctrl.products = [
-			{ name: 'TV', price: 500},
-			{ name: 'Microwave', price: 150},
-			{ name: 'ChromeCast', price: 70},
-		];
+		ctrl.products = cartService.getProducts();
 		ctrl.$onInit = function (){
 			ctrl.selectedProduct = {};
 			ctrl.soldProducts = [];
@@ -27,7 +23,7 @@
 	    ctrl.selectedProduct.total = item.price * quantity;
 
 	    var isSoldProduct = checkIfSoldProduct(ctrl.soldProducts, ctrl.selectedProduct);
-	    console.log(isSoldProduct);
+	    // console.log(isSoldProduct);
 	    if(ctrl.soldProducts.length == 0 || !isSoldProduct) {
 	    	ctrl.soldProducts.push(ctrl.selectedProduct);
 	    } else {
