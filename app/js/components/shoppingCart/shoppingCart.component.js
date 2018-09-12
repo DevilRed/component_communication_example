@@ -14,7 +14,10 @@
 		ctrl.products = cartService.getProducts();
 		ctrl.$onInit = function (){
 			ctrl.selectedProduct = {};
-			ctrl.soldProducts = $localStorage.soldProducts || [];
+			if(typeof $localStorage.soldProducts == "undefined") {
+				$localStorage.soldProducts = [];
+			}
+			ctrl.soldProducts = $localStorage.soldProducts;
 		};
 
 	  cartService.onItemsAdded(function(item, quantity){
