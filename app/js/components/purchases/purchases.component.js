@@ -12,12 +12,16 @@
 		})
 	;
 
-		function purchasesController(cartService){
+		function purchasesController(cartService, $localStorage){
 			var $ctrl = this;
 			$ctrl.orders = [];
 
 			$ctrl.$onInit = function (){
 				$ctrl.purchasedItems = cartService.getSoldProducts();
+				if(typeof $localStorage.purchasedOrders == "undefined") {
+					$localStorage.purchasedOrders = [];
+				}
+				$ctrl.orders = $localStorage.purchasedOrders;
 			};
 
 			$ctrl.doOrder = function (){
@@ -31,7 +35,7 @@
 					currentOrder.total = totalPurchase;
 					currentOrder.orderItems = $ctrl.purchasedItems;
 
-					$ctrl.orders.push(currentOrder);
+					$localStorage.purchasedOrders.push(currentOrder);
 				}
 			};
 		};
