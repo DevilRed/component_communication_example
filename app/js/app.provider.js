@@ -7,6 +7,7 @@
 		.config(function ($provide){
 			$provide.factory("cartService", function ($localStorage){
 				  var callbacks=[];
+				  var cartDeleteCallbacks = [];
 				  var addItemToCart=function(selectedItem, quantity){
 					  // notify if there are any listeners
 					  // the components can register functions that will be executed
@@ -20,6 +21,18 @@
 				  var onItemsAdded=function(callback){
 				    callbacks.push(callback);
 				  }
+
+				  var onCartDelete = function (cb){
+				  	cartDeleteCallbacks.push(cb);
+				  };
+
+				  var deleteCart = function (){
+				  	$localStorage.soldProducts = [];
+				  	var i = 0;
+				  	for( i = 0; i < cartDeleteCallbacks.length; i++){
+				  		cartDeleteCallbacks[i]($localStorage.soldProducts);
+				  	}
+				  };
 
 				  var getProducts = function (){
 				  	return [
@@ -37,7 +50,9 @@
 				    onItemsAdded:onItemsAdded,
 				    addItemToCart:addItemToCart,
 				    getProducts: getProducts,
-				    getSoldProducts: getSoldProducts
+				    getSoldProducts: getSoldProducts,
+				    deleteCart: deleteCart,
+				    onCartDelete: onCartDelete
 				  }
 			});
 		});

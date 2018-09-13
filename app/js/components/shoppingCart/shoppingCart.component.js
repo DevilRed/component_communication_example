@@ -42,6 +42,10 @@
 	  	$localStorage.$reset();
 	  	ctrl.soldProducts = [];
 	  };
+
+	  cartService.onCartDelete(function (soldProducts){
+	  	ctrl.soldProducts = soldProducts;
+	  });
 	};
 
 	function checkIfSoldProduct(items, sold){

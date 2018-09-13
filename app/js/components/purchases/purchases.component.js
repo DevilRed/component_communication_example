@@ -36,6 +36,7 @@
 					currentOrder.orderItems = $ctrl.purchasedItems;
 
 					$localStorage.purchasedOrders.push(currentOrder);
+					cartService.deleteCart();
 				}
 			};
 		};
