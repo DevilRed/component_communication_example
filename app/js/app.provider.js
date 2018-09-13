@@ -5,7 +5,7 @@
 
 	angular.module('buyItNow')
 		.config(function ($provide){
-			$provide.factory("cartService", function (){
+			$provide.factory("cartService", function ($localStorage){
 				  var callbacks=[];
 				  var addItemToCart=function(selectedItem, quantity){
 					  // notify if there are any listeners
@@ -28,10 +28,16 @@
 					  	{ name: 'ChromeCast', price: 70},
 				  	];
 				  };
+
+				  var getSoldProducts = function (){
+				  	return $localStorage.soldProducts;
+				  };
+
 				  return{
 				    onItemsAdded:onItemsAdded,
 				    addItemToCart:addItemToCart,
-				    getProducts: getProducts
+				    getProducts: getProducts,
+				    getSoldProducts: getSoldProducts
 				  }
 			});
 		});

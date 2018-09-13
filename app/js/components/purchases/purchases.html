@@ -1,0 +1,30 @@
+<button class="button right" ng-click="$ctrl.doOrder()">Confirm Order</button>
+<h3>YOUR PURCHASES</h3>
+<table>
+	<thead>
+		<tr>
+			<th>Submit Date</th>
+			<th>Total Purchase</th>
+			<th>Summary</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="order in $ctrl.orders">
+			<td>{{ order.submitDate | date:'MM/dd/yyyy' }}</td>
+			<td>{{ order.total }}</td>
+			<td>
+				Purchases products:
+				<table>
+					<tbody>
+						<tr ng-repeat="product in order.orderItems">
+							<td>{{ product.name }}</td>
+							<td>{{ product.quantity }}</td>
+							<td>{{ product.price }}</td>
+							<td>{{ product.total }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
