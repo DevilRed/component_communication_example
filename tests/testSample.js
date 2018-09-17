@@ -7,9 +7,16 @@ describe('buyItNow a small angularJS app', function(){ //describe your object ty
             cartService = _cartService_;
         }));
 
-        it('should return products', function (){
+        it('should return products and not be null', function (){
             var products = cartService.getProducts();
             expect(products).not.toBe(null);
+            expect(products.length).toBe(3);
+        });
+        it('products should definite products', function (){
+            var products = cartService.getProducts();
+            expect(products).toContain({ name: 'TV', price: 500});
+            expect(products).toContain({ name: 'Microwave', price: 150});
+            expect(products).toContain({ name: 'ChromeCast', price: 70});
         });
     });
 });
