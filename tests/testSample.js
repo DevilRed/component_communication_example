@@ -7,16 +7,27 @@ describe('buyItNow a small angularJS app', function(){ //describe your object ty
             cartService = _cartService_;
         }));
 
-        it('should return products and not be null', function (){
+        it('should return 3 products only', function (){
             var products = cartService.getProducts();
-            expect(products).not.toBe(null);
             expect(products.length).toBe(3);
+            expect(products.length).not.toBe(5);
         });
-        it('products should definite products', function (){
+        it('getProducts should return specific products', function (){
             var products = cartService.getProducts();
             expect(products).toContain({ name: 'TV', price: 500});
             expect(products).toContain({ name: 'Microwave', price: 150});
             expect(products).toContain({ name: 'ChromeCast', price: 70});
+        });
+        it('testing callbacks being called when addItemToCart fn is triggered', function (){
+            var cb = function (item, q){
+                console.log(item, q);
+            };
+            cartService.onItemsAdded(cb);
+            spyOn(console, 'log');// jasmine signature: spyOn(object, method)
+            var item = {name: 'TV', price: 500};
+            var q = 3;
+            cartService.addItemToCart(item, 3);
+            expect(console.log).toHaveBeenCalledWith({name: 'TV', price: 500}, q);
         });
     });
 });
