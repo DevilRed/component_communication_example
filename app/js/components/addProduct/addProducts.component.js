@@ -1,7 +1,7 @@
-(function (){
+(function (angular){
 	'use strict';
 
-	var angular = require('angular');
+	// var angular = require('angular');
 
 	angular.module('buyItNow')
 		.component('addProductForm', {
@@ -25,4 +25,4 @@
 	  	$scope.cartItems = items;
 	  });
 	};
-})();
+})(window.angular);

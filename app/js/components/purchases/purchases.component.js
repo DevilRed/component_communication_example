@@ -1,7 +1,7 @@
-(function (){
+(function (angular){
 	'use strict';
 
-	var angular = require('angular');
+	// var angular = require('angular');
 	angular.module('buyItNow')
 		.component('purchasesList', {
 			templateUrl: 'js/components/purchases/purchases.html',
@@ -40,4 +40,4 @@
 				}
 			};
 		};
-})();
+})(window.angular);

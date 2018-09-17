@@ -1,7 +1,7 @@
-(function (){
+(function (angular){
 	'use strict';
 
-	var angular = require('angular');
+	// var angular = require('angular');
 
 	angular.module('buyItNow')
 		.config(function ($provide){
@@ -56,4 +56,4 @@
 				  }
 			});
 		});
-})();
+})(window.angular);
