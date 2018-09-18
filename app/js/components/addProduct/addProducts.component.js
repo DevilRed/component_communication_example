@@ -1,12 +1,12 @@
 (function (angular){
 	'use strict';
 
-	// var angular = require('angular');
+	var angular = require('angular');
 
 	angular.module('buyItNow')
 		.component('addProductForm', {
 			templateUrl: 'js/components/addProduct/addProduct.html',
-			controller: addProductController,
+			controller: ['$scope', '$rootScope', 'cartService', addProductController],
 		});
 
 	function addProductController($scope, $rootScope, cartService){

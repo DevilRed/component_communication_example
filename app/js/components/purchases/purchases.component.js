@@ -5,7 +5,7 @@
 	angular.module('buyItNow')
 		.component('purchasesList', {
 			templateUrl: 'js/components/purchases/purchases.html',
-			controller: purchasesController,
+			controller: ['cartService', '$localStorage', purchasesController],
 			bindings: {
 				purchasesList: '<'
 			}

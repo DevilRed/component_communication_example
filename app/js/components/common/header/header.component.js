@@ -3,7 +3,7 @@
 	angular.module('buyItNow')
 		.component('customHeader', {
 			templateUrl: 'js/components/common/header/header.html',
-			controller: headerController,
+			controller: [headerController],
 			bindings: {
 				logo: '@'
 			}

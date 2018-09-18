@@ -6,7 +6,7 @@
 	angular.module('buyItNow')
 		.component('shoppingCart', {
 			templateUrl: 'js/components/shoppingCart/shoppingCart.html',
-			controller: shoppingCartController
+			controller: ['$scope', 'cartService', '$localStorage', shoppingCartController]
 		});
 
 	function shoppingCartController($scope, cartService, $localStorage){

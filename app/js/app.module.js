@@ -3,7 +3,7 @@
 	var angular = require('angular');
 
 	require('./templates');
-	require('ngStorage');
+	require('ngstorage');
 
 
 	var app = angular.module('buyItNow', ['buyItNow.templates', "ngStorage"]);
