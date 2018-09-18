@@ -14,6 +14,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var watchify    = require('watchify');
 var buffer      = require('vinyl-buffer');
 var gutil       = require('gulp-util');
+var rimraf      =  require('rimraf');
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -97,13 +98,21 @@ function bundle() {
             }
         }))// production only
             .on('error', gutil.log)
-        .pipe(sourcemaps.write(path.mapsDir))
+        .pipe(gulpif(env === 'development', sourcemaps.write(path.mapsDir)))// sourcemaps are written in production only
         .pipe(gulp.dest(path.js_dest))
         .pipe(browserSync.stream({once: true}));
 }
 
 gulp.task('bundle', function () {
     return bundle();
+});
+
+gulp.task('clean', function (){
+    rimraf('app/public/', function (err){
+        if(err)
+            console.log(err);
+        console.log('successfully deleted');
+    });
 });
 
 // spritesmith

@@ -4,7 +4,8 @@
   "description": "doing angular project",
   "main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "build-prod-js": "set NODE_ENV=production && gulp bundle"
   },
   "author": "",
   "license": "ISC",
