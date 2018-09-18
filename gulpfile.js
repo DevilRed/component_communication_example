@@ -90,10 +90,10 @@ function bundle() {
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify({
-            mangle: false,
+            mangle: false,// When you minify the javascript, with an option called mangle turned on, then the variable names get mangled
             output: {
-                beautify: false,
-                comments: false
+                beautify: false,// to uglify content
+                comments: false// to strip comments
             }
         }))// production only
             .on('error', gutil.log)
