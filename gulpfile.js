@@ -90,7 +90,7 @@ function bundle() {
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify({
-            mangle: false,// When you minify the javascript, with an option called mangle turned on, then the variable names get mangled
+            mangle: false,// When you minify the javascript, with an option called mangle turned on, then the variable names get mangled, this is the issue for minification angularJS code
             output: {
                 beautify: false,// to uglify content
                 comments: false// to strip comments
