@@ -89,7 +89,13 @@ function bundle() {
         .pipe(source(path.js_outputFile))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-            // .pipe(uglify())// production only
+        .pipe(uglify({
+            mangle: false,
+            output: {
+                beautify: false,
+                comments: false
+            }
+        }))// production only
             .on('error', gutil.log)
         .pipe(sourcemaps.write(path.mapsDir))
         .pipe(gulp.dest(path.js_dest))
