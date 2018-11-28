@@ -18,11 +18,15 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser, files to load by the testing
     // the order here is important, Angular and all of its related code are placed up top, then the application files, and finally the test files
     files: [
-      {pattern: 'node_modules/angular/angular.js', watch: false},
-      {pattern: 'node_modules/angular-mocks/angular-mocks.js', watch: false},// it allows to load angular modules, etc, to test
-      'app/js/*.js',
-      'app/js/components/**/*.js', //use wildcards in real apps
-      'tests/*.js', //use wildcards in real apps
+      // load npm libraries first for testing purposes
+      {pattern: 'node_modules/angular/angular.min.js', watch: false},
+      {pattern: 'node_modules/angular-mocks/angular-mocks.js', watch: false},
+      // load module
+      'app/js/app.module.js',
+      // 'app/js/*.js',
+      // 'app/js/components/**/*.js', //use wildcards in real apps
+      // load test files
+      'tests/*.js',
     ],
 
 
@@ -34,6 +38,9 @@ module.exports = function(config) {
     // files to be processed by browserify
     preprocessors: {
         'app/js/*.js': [ 'browserify']
+    },
+    browserify: {
+      debug: true// The debug flag will help us debug the tests using source maps
     },
 
 
