@@ -103,7 +103,7 @@ function bundle() {
         .pipe(browserSync.stream({once: true}));
 }
 
-gulp.task('bundle', function () {
+gulp.task('bundle', ['clean'], function () {
     return bundle();
 });
 
